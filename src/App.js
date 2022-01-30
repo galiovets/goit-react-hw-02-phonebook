@@ -4,7 +4,7 @@ import './App.css';
 import Container from './components/Container';
 import { PhonebookTitle, ContactTitle } from './components/Title/Title.styled';
 import Form from './components/Form';
-import ContactsList from './components/ContactList';
+import ContactsList from './components/Contacts/ContactList';
 import Filter from './components/Filter';
 
 class App extends Component {
@@ -27,7 +27,9 @@ class App extends Component {
     };
     if (
       contacts.find(
-        contact => contact.name === newContact.name || contact.number === newContact.number,
+        contact =>
+          contact.name.toLocaleLowerCase() === newContact.name.toLocaleLowerCase() ||
+          contact.number === newContact.number,
       )
     ) {
       return alert(`${newContact.name} is added`);
